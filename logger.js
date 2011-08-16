@@ -53,6 +53,7 @@ ircClient.on('join', function(channel, nick) {
 
 ircClient.on('part', function(channel, nick, reason) {
   if (!chanflt(channel)) return;
+  if (nick == NICK) return;
   log('part', { nick: nick, reason: reason });
 });
 
