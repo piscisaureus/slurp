@@ -1,0 +1,111 @@
+!!! 5
+html(lang="en")
+  head
+    title #{channel} logs - #{page}
+    :sass
+      *
+        :font-family "Segoe UI", Arial, Helvetica, sans-serif
+        :font-size 10pt
+
+      body, html
+        :margin 0
+        :padding 0
+
+      a, a:visited
+        :color #c50
+
+      a:hover, a:active, a:focus
+        :color red
+
+      ul
+        :padding 0 0 0 2em
+
+      div.navigation
+        :background #eee
+        :position fixed
+        :top 0
+        :left 0
+        :padding .333em .666em
+        :width 100%
+        :height 1.5em
+        span.nolink
+          :color #333
+        span.date
+          :color #333
+          :font-weight bold
+
+      div.index
+        :padding .333em .666em
+
+      div.log
+        :margin 2.5em 0 0 0
+        :padding 0 .333em 1em .333em;
+
+      table.log
+        :border-collapse collapse
+        tr
+          td
+            :border 0
+            :padding .167em .333em
+          td.time
+            :color #333
+
+      +action
+        td.nick
+          :color #333
+        td.content
+          :font-style italic
+          :color #333
+
+      table.log
+        tr.action
+          +action
+        tr.join
+          +action
+        tr.quit
+          +action
+        tr.part
+          +action
+
+      table.log
+        tr.kick
+          +action
+          td.content
+            :color red
+            span.victim
+              :font-weight bold
+
+      table.log
+        tr.nick
+          +action
+          td.content
+            span.new_nick
+              :font-weight bold
+
+      table.log
+        tr.topic
+          +action
+          td.content
+            span.topic
+              :font-weight bold
+
+      table.log
+        tr.message
+          td.nick
+            :color #c50
+          td.content
+            :color black
+            span.inverse
+              :color white
+              :background-color black
+            span.bold
+              :font-weight bold
+            span.italic
+              :font-style italic
+            span.underline
+              :text-decoration underline
+            span.monospace
+              :white-space pre
+              :font-family monospace
+
+  body !{body}

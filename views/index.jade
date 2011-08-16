@@ -1,0 +1,7 @@
+div.index
+  ul
+    - each date in dates
+      li
+        a(href= 'log/' + date) #{date}
+        - if (date == dates[0])
+          !{' (<a href="log/latest">latest</a>)'}
