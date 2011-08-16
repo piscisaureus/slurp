@@ -10,38 +10,20 @@ var app = express.createServer();
 
 app.set('view engine', 'jade');
 
-app.get('/', function(req, res){
-  res.send('hello world');
+app.get('/', function(req, res) {
+  res.redirect('/log/latest');
 });
-
-function getIndex(cb) {
-  fs.readdir(LOG_DIR, function(err, filenames) {
-    if (err) {
-      cb(err);
-      return;
-    }
-
-    var dates = filenames.map(function(filename) {
-      return filename.replace(/\..*$/, '');
-    });
-
-    dates.sort();
-
-    cb(null, dates);
-  });
-}
 
 app.get('/index', function(req, res) {
   getIndex(function(err, dates) {
     if (err) {
-      res.send('' + err);
+      res.send('' + err, 500);
       res.send();
     }
 
     dates.reverse();
 
     res.render('index.jade', {dates: dates, channel: CHANNEL, page: 'index'});
-    res.end();
   });
 });
 
@@ -69,6 +51,23 @@ app.get('/log/:date', function(req, res) {
 
 app.listen(80);
 
+
+function getIndex(cb) {
+  fs.readdir(LOG_DIR, function(err, filenames) {
+    if (err) {
+      cb(err);
+      return;
+    }
+
+    var dates = filenames.map(function(filename) {
+      return filename.replace(/\..*$/, '');
+    });
+
+    dates.sort();
+
+    cb(null, dates);
+  });
+}
 
 function renderLog(req, res, date, dates, isLatest) {
   var filename = path.resolve(LOG_DIR, date + '.txt'),
@@ -132,13 +131,11 @@ function renderLog(req, res, date, dates, isLatest) {
       next: dates[indexPosition + 1],
       isLatest: isLatest
     });
-    res.end();
   });
 
   stream.on('error', function(err) {
     stream.destroy();
-    res.send('' + err);
-    res.end();
+    res.send('' + err, 404);
     return;
   });
 }
