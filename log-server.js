@@ -14,6 +14,25 @@ app.get('/', function(req, res) {
   res.redirect('/log/latest');
 });
 
+app.get('/uptime', function(req, res) {
+  var delta = (new Date()).getTime() - START.getTime(),
+      uptime = '';
+
+  function calc(suffix, divisor, pad) {
+    var n = Math.floor(delta / divisor);
+    delta -= n * divisor;
+    if (pad && n < 10) n = '0' + n;
+    uptime += n + suffix;
+  }
+
+  calc('d ', 24 * 60 * 60 * 1000);
+  calc('h ', 60 * 60 * 1000);
+  calc('m ', 60 * 1000);
+  calc('s', 1000);
+
+  res.send("Up: " + uptime);
+});
+
 app.get('/index', function(req, res) {
   getIndex(function(err, dates) {
     if (err) {

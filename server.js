@@ -1,6 +1,7 @@
 SERVER = "irc.freenode.net";
 CHANNEL = "#libuv";
 NICK = "slurp";
+START = new Date();
 
 var fs = require('fs'),
     path = require('path');
