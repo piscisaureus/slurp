@@ -43,17 +43,22 @@ ircClient.on('nick', function(nick, new_nick, channel) {
 
 ircClient.on('topic', function(channel, topic, nick) {
   if (!chanflt(channel)) return;
+
+  // Ignore topic changes the first 5 seconds so we don't
+  // litter our logs with "topic" messages when the bot restarts.
+  if ((new Date()).getTime() - START.getTime() < 5000) return;
+
   log('topic', { nick: nick, topic: topic });
 });
 
 ircClient.on('join', function(channel, nick) {
   if (!chanflt(channel)) return;
+  if (nick == NICK) return;
   log('join', { nick: nick });
 });
 
 ircClient.on('part', function(channel, nick, reason) {
   if (!chanflt(channel)) return;
-  if (nick == NICK) return;
   log('part', { nick: nick, reason: reason });
 });
 
