@@ -23,16 +23,6 @@ function format(input) {
       text,
       spans = [];
 
-  function clone(o) {
-    var o2 = {};
-    for (var key in o) {
-      if (o.hasOwnProperty(key)) {
-        o2[key] = o[key];
-      }
-    }
-    return o2;
-  }
-
   function emit() {
     if (!text) return;
 
@@ -127,6 +117,7 @@ function format(input) {
 
       case '\x0f':
         resetFormatting();
+        break;
 
       case '\x11':
         monospace = !monospace;
