@@ -1,21 +1,21 @@
 div.navigation
   span.date= date
-  #{' | '}
+  = ' | '
   - if (previous)
     a(href=previous) previous (#{previous})
   - else
     span.nolink previous (none)
-  #{' | '}
+  = ' | '
   - if (next)
     a(href=next) next (#{next})
   - else
     span.nolink next (none)
-  #{' | '}
+  = ' | '
   - if (!isLatest)
     a(href='latest') latest
   - else
     span.nolink latest
-  #{' | '}
+  = ' | '
   a(href='/index') index
 
 div.log
@@ -28,11 +28,14 @@ div.log
             td.time= event.time
             td.nick= '<' + event.nick + '>'
             td.content
-              - each span in format(event.message)
+              - var spans = format(event.message)
+              - each span, i in spans
                 - if (span.href)
-                  a(style=span.style, class=span.class, href=span.href, target='_blank') #{span.text}
+                  a(style=span.style, class=span.class, href=span.href, target='_blank')= span.text
+                - else if (span.style || span.class)
+                  span(style=span.style, class=span.class)= span.text
                 - else
-                  span(style=span.style, class=span.class) #{span.text}
+                  = span.text
 
           - if (event.type == 'action')
             td.time= event.time
@@ -45,13 +48,15 @@ div.log
               td.nick= '* ' + event.nick.replace(/!.*$/, '')
             - else
               td.nick
-            td.content topic:#{' '}
+            td.content
+              = 'topic: '
               span.topic= event.topic
 
           - if (event.type == 'nick')
             td.time= event.time
             td.nick= '* ' + event.nick
-            td.content changed nick to#{' '}
+            td.content
+              = 'changed nick to '
               span.new_nick= event.new_nick
 
           - if (event.type == 'join')
@@ -62,9 +67,10 @@ div.log
           - if (event.type == 'part' || event.type == 'quit')
             td.time= event.time
             td.nick= '* ' + event.nick
-            td.content #{event.type}
+            td.content
+              = event.type
               - if (event.reason)
-                span.reason #{' '}(#{event.reason})
+                span.reason= ' ' + event.reason
 
           - if (event.type == 'kick')
             td.time= event.time
@@ -72,4 +78,4 @@ div.log
             td.content booted
               span.victim= event.victim
               - if (event.reason)
-                span.reason #{' '}(#{event.reason})
+                span.reason= ' ' + event.reason
