@@ -30,7 +30,7 @@ div.log
             td.content
               - each span in format(event.message)
                 - if (span.href)
-                  a(style=span.style, class=span.class, href=span.href) #{span.text}
+                  a(style=span.style, class=span.class, href=span.href, target='_blank') #{span.text}
                 - else
                   span(style=span.style, class=span.class) #{span.text}
 
