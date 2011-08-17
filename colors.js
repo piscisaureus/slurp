@@ -118,7 +118,6 @@ function format(input) {
       return input.length;
     }
     var url = result[0].replace(/[[\)|\]]?(\.*|[\,;])$/, '');
-    console.log(url);
     return input.indexOf(url) + url.length;
   }
 
@@ -131,7 +130,7 @@ function format(input) {
     var fmtPos = findNextFormatting();
     var urlPos = !url ? findUrlStart() : findUrlEnd();
     var pos = fmtPos < urlPos ? fmtPos : urlPos;
-    console.log(fmtPos, urlPos, url);
+
     text += input.slice(0, pos);
     input = input.slice(pos);
 
