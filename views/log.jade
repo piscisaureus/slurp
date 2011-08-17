@@ -70,7 +70,7 @@ div.log
             td.content
               = event.type
               - if (event.reason)
-                span.reason= ' ' + event.reason
+                span.reason= ' (' + event.reason + ')'
 
           - if (event.type == 'kick')
             td.time= event.time
@@ -78,4 +78,4 @@ div.log
             td.content booted
               span.victim= event.victim
               - if (event.reason)
-                span.reason= ' ' + event.reason
+                span.reason= ' (' + event.reason + ')'
