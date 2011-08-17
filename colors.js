@@ -70,7 +70,7 @@ function format(input) {
     };
 
     if (css.length) {
-      span.css = css.join(' ')
+      span.style = css.join(' ')
     }
 
     if (classes.length) {
