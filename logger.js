@@ -73,6 +73,10 @@ ircClient.on('quit', function(nick, reason, channel) {
   log('quit', { nick: nick, reason: reason });
 });
 
+ircClient.on('abort', function() {
+  // The logger stopped
+  process.exit();
+});
 
 var logStream = null,
     lastUtcDate = null;
