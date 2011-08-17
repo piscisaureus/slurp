@@ -21,6 +21,7 @@ var COLOR_CODES = {
 function format(input) {
   var fg, bg, bold, italic, underline, inverse, monospace,
       text,
+      url,
       spans = [];
 
   function emit() {
@@ -66,9 +67,20 @@ function format(input) {
 
     var span = {
       text: text,
-      style: css.join(' '),
-      'class': classes.join(' ')
     };
+
+    if (css.length) {
+      span.css = css.join(' ')
+    }
+
+    if (classes.length) {
+      span['class'] = classes.join(' ');
+    }
+
+    if (url) {
+      span.href = /^(https?|ftp):/.test(text) ? text : 'http://' + text;
+    }
+
     spans.push(span);
   }
 
@@ -91,64 +103,94 @@ function format(input) {
     }
   }
 
+  function findUrlStart() {
+    var result = input.match(/\b((https?|ftp):\/\/|www\.)[^ ]+/);
+    if (!result) {
+      return input.length;
+    } else {
+      return input.indexOf(result[0]);
+    }
+  }
+
+  function findUrlEnd() {
+    var result = input.match(/\b((https?|ftp):\/\/|www\.)[^ \x00-\x19]+/);
+    if (!result) {
+      return input.length;
+    }
+    var url = result[0].replace(/[[\)|\]]?(\.*|[\,;])$/, '');
+    console.log(url);
+    return input.indexOf(url) + url.length;
+  }
+
   resetFormatting();
+  url = false;
   text = '';
 
   while (input.length) {
     // Find all characters until the next magic char
-    var pos = findNextFormatting();
+    var fmtPos = findNextFormatting();
+    var urlPos = !url ? findUrlStart() : findUrlEnd();
+    var pos = fmtPos < urlPos ? fmtPos : urlPos;
+    console.log(fmtPos, urlPos, url);
     text += input.slice(0, pos);
     input = input.slice(pos);
 
     // Break if the input is up
     if (!input) break;
 
-    // Emit the text belonging to the monospacevious span
+    // Emit the text belonging to the previous span
     emit();
     text = '';
 
-    // Parse the formatting character
-    var char = input[0];
-    input = input.slice(1);
-    switch (char) {
-      case '\x02':
-        bold = !bold;
-        break;
+    if (pos == urlPos) {
+      // Move on or off url mode
+      url = !url;
+    }
 
-      case '\x0f':
-        resetFormatting();
-        break;
+    if (pos == fmtPos) {
+      // Parse the formatting character
+      var char = input[0];
+      input = input.slice(1);
+      switch (char) {
+        case '\x02':
+          bold = !bold;
+          break;
 
-      case '\x11':
-        monospace = !monospace;
-        break;
+        case '\x0f':
+          resetFormatting();
+          break;
 
-      case '\x12':
-      case '\x16':
-        inverse = !inverse;
-        break;
+        case '\x11':
+          monospace = !monospace;
+          break;
 
-      case '\x1d':
-        italic = !italic;
-        break;
+        case '\x12':
+        case '\x16':
+          inverse = !inverse;
+          break;
 
-      case '\x1f':
-        underline = !underline;
-        break;
+        case '\x1d':
+          italic = !italic;
+          break;
 
-      case '\x03':
-        var match = input.match(/^(\d{1,2})?(?:,(\d{1,2}))?/);
-        fg = (match[1] !== undefined) ? COLOR_CODES[+match[1]] : undefined;
-        bg = (match[2] !== undefined) ? COLOR_CODES[+match[2]] : undefined;
-        input = input.slice(match[0].length);
-        break;
+        case '\x1f':
+          underline = !underline;
+          break;
 
-      case '\x04':
-        var match = input.match(/^([0-9a-f]{6})?(?:,([0-9a-f]{6}))?/i);
-        fg = (match[1] !== undefined) ? '#' + match[1].toLowerCase() : undefined;
-        bg = (match[2] !== undefined) ? '#' + match[2].toLowerCase() : undefined;
-        input = input.slice(match[0].length);
-        break;
+        case '\x03':
+          var match = input.match(/^(\d{1,2})?(?:,(\d{1,2}))?/);
+          fg = (match[1] !== undefined) ? COLOR_CODES[+match[1]] : undefined;
+          bg = (match[2] !== undefined) ? COLOR_CODES[+match[2]] : undefined;
+          input = input.slice(match[0].length);
+          break;
+
+        case '\x04':
+          var match = input.match(/^([0-9a-f]{6})?(?:,([0-9a-f]{6}))?/i);
+          fg = (match[1] !== undefined) ? '#' + match[1].toLowerCase() : undefined;
+          bg = (match[2] !== undefined) ? '#' + match[2].toLowerCase() : undefined;
+          input = input.slice(match[0].length);
+          break;
+      }
     }
   }
 

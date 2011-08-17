@@ -29,14 +29,10 @@ div.log
             td.nick= '<' + event.nick + '>'
             td.content
               - each span in format(event.message)
-                - if (span.style && span.class)
-                  span(style=span.style, class=span.class) #{span.text}
-                - else if (span.style)
-                  span(style=span.style) #{span.text}
-                - else if (span.class)
-                  span(class=span.class) #{span.text}
+                - if (span.href)
+                  a(style=span.style, class=span.class, href=span.href) #{span.text}
                 - else
-                  #{span.text}
+                  span(style=span.style, class=span.class) #{span.text}
 
           - if (event.type == 'action')
             td.time= event.time
