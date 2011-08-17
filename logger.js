@@ -8,6 +8,7 @@ var irc = require('irc'),
 
 var ircClient = new irc.Client(SERVER, NICK, {
   channels: [CHANNEL],
+  debug: true
 });
 
 ircClient.on('error', function(error) {
