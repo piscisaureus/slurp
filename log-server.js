@@ -40,7 +40,7 @@ exports.start = function() {
     getIndex(function(err, dates) {
       if (err) {
         res.send('' + err, 500);
-        res.send();
+        res.end();
       }
 
       dates.reverse();
@@ -53,7 +53,7 @@ exports.start = function() {
     getIndex(function(err, dates) {
       if (err) {
         res.send('' + err);
-        res.send();
+        res.end();
       }
 
       renderLog(req, res, dates[dates.length - 1], dates, true);
@@ -64,7 +64,7 @@ exports.start = function() {
     getIndex(function(err, dates) {
       if (err) {
         res.send('' + err);
-        res.send();
+        res.end();
       }
 
       renderLog(req, res, req.params.date, dates, false);
