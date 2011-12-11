@@ -29,9 +29,9 @@ html(lang="en")
         :width 100%
         :height 1.5em
         span.nolink
-          :color #333
+          :color #444
         span.date
-          :color #333
+          :color #444
           :font-weight bold
 
       div.index
@@ -48,10 +48,11 @@ html(lang="en")
             :vertical-align top
           td
             :border 0
-            :padding .1em .333em
+            :padding .1em .5em
           td.time
+            :border-right 1px solid #eee
             a
-              :color #333
+              :color #444
               :text-decoration none
             a:hover
               :text-decoration underline
@@ -61,10 +62,10 @@ html(lang="en")
 
       +action
         td.nick
-          :color #333
+          :color #444
         td.content
           :font-style italic
-          :color #333
+          :color #444
 
       table.log
         tr.action
