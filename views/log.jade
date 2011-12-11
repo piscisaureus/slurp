@@ -24,7 +24,8 @@ div.log
       - each event in events
         tr(class=event.type)
           td.time
-            a(href='#' + event.timestamp, name=event.timestamp)= event.time
+            a(name= event.timestamp, class='time-anchor')
+            a(href='#' + event.timestamp)= event.time
 
           - if (event.type == 'message')
             td.nick= '<' + event.nick + '>'
