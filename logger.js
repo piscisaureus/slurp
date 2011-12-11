@@ -42,12 +42,13 @@ exports.start = function() {
     log('nick', { nick: nick, new_nick: new_nick });
   });
 
+  var start_time = new Date();
   ircClient.on('topic', function(channel, topic, nick) {
     if (!chanflt(channel)) return;
 
     // Ignore topic changes the first 10 seconds so we don't
     // litter our logs with "topic" messages when the bot restarts.
-    if ((new Date()).getTime() - START.getTime() < 10000) return;
+    if ((new Date()).getTime() - start_time.getTime() < 10000) return;
 
     log('topic', { nick: nick, topic: topic });
   });
