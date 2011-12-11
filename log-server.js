@@ -16,8 +16,9 @@ exports.start = function() {
     res.redirect('/log/latest');
   });
 
+  var start_time = new Date();
   app.get('/uptime', function(req, res) {
-    var delta = (new Date()).getTime() - START.getTime(),
+    var delta = (new Date()).getTime() - start_time.getTime(),
         uptime = '';
 
     function calc(suffix, divisor, pad) {
