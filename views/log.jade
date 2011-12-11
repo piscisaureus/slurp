@@ -23,9 +23,10 @@ div.log
     tbody
       - each event in events
         tr(class=event.type)
+          td.time
+            a(href='#' + event.timestamp, name=event.timestamp)= event.time
 
           - if (event.type == 'message')
-            td.time= event.time
             td.nick= '<' + event.nick + '>'
             td.content
               - var spans = format(event.message)
@@ -38,12 +39,10 @@ div.log
                   = span.text
 
           - if (event.type == 'action')
-            td.time= event.time
             td.nick= '* ' + event.nick
             td.content= event.action
 
           - if (event.type == 'topic')
-            td.time= event.time
             - if (event.nick)
               td.nick= '* ' + event.nick.replace(/!.*$/, '')
             - else
@@ -53,19 +52,16 @@ div.log
               span.topic= event.topic
 
           - if (event.type == 'nick')
-            td.time= event.time
             td.nick= '* ' + event.nick
             td.content
               = 'changed nick to '
               span.new_nick= event.new_nick
 
           - if (event.type == 'join')
-            td.time= event.time
             td.nick= '* ' + event.nick
             td.content joined
 
           - if (event.type == 'part' || event.type == 'quit')
-            td.time= event.time
             td.nick= '* ' + event.nick
             td.content
               = event.type
@@ -73,7 +69,6 @@ div.log
                 span.reason= ' (' + event.reason + ')'
 
           - if (event.type == 'kick')
-            td.time= event.time
             td.nick= '* ' + event.nick
             td.content booted
               span.victim= event.victim

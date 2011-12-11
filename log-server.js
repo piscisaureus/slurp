@@ -120,6 +120,7 @@ exports.start = function() {
         if (!event) continue;
 
         event.date = new Date(event.date);
+        event.timestamp = event.date.toISOString();
         event.time = utc.getTime(event.date);
         if (!event.date) continue;
 

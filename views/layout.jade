@@ -50,7 +50,11 @@ html(lang="en")
             :border 0
             :padding .1em .333em
           td.time
-            :color #333
+            a
+              :color #333
+              :text-decoration none
+            a:hover
+              :text-decoration underline
 
       +action
         td.nick
