@@ -13,5 +13,5 @@ if (!path.existsSync(LOG_DIR)) {
   fs.mkdirSync(LOG_DIR, 0777);
 }
 
-require('./logger.js');
-require('./log-server.js');
+require('./logger.js').start();
+require('./log-server.js').start();
