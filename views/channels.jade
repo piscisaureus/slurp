@@ -1,0 +1,10 @@
+div.channels
+  ul
+    - each config in configs
+      li
+        a(href= config.key + '/latest') #{config.channel}
+        = ' ('
+        a(href= config.key + '/index') index
+        = ' | '
+        a(href= config.key + '/latest') latest
+        = ')'

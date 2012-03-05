@@ -1,5 +1,7 @@
 div.navigation
-  span.date= date
+  span.title #{channel} #{page}
+  = ' | '
+  a(href='index') index
   = ' | '
   - if (previous)
     a(href=previous) previous (#{previous})
@@ -15,8 +17,6 @@ div.navigation
     a(href='latest') latest
   - else
     span.nolink latest
-  = ' | '
-  a(href='/index') index
 
 div.log
   table.log

@@ -1,7 +1,14 @@
+div.navigation
+  span.title #{channel}
+  = ' | '
+  span.nolink index
+  = ' | '
+  a(href='latest') latest
+
 div.index
   ul
     - each date in dates
       li
-        a(href= 'log/' + date) #{date}
+        a(href= date) #{date}
         - if (date == dates[0])
-          !{' (<a href="log/latest">latest</a>)'}
+          !{' (<a href="latest">latest</a>)'}

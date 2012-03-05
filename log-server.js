@@ -7,13 +7,13 @@ var colors = require('./colors'),
     util = require('util');
 
 
-exports.start = function() {
-  var app = express.createServer();
+function LogServer(configs) {
+  var app = this._app = express.createServer();
 
   app.set('view engine', 'jade');
 
   app.get('/', function(req, res) {
-    res.redirect('/log/latest');
+    res.redirect('/channels');
   });
 
   var start_time = new Date();
@@ -33,49 +33,103 @@ exports.start = function() {
     calc('m ', 60 * 1000);
     calc('s', 1000);
 
-    res.send("Up: " + uptime);
+    res.end("Up: " + uptime);
   });
 
-  app.get('/index', function(req, res) {
-    getIndex(function(err, dates) {
+  app.get('/channels', function(req, res) {
+    var sortedConfigs = configs.slice(0);
+    sortedConfigs.sort(function(a, b) {
+      return (a.channel.toLowerCase() < b.channel.toLowerCase()) ? -1 : 1;
+    });
+
+    res.render('channels.jade', {
+      configs: sortedConfigs,
+      title: 'channel index'
+    });
+
+    res.end();
+  });
+
+  app.get('/:key/index', function(req, res) {
+    var config = getConfig(req.params.key);
+    if (!config) {
+      res.send('No configuration found for ' + req.params.key, 404);
+      res.end();
+      return;
+    } else if (config.key !== req.params.key) {
+      res.redirect("/" + config.key + "/index");
+      return;
+    }
+
+    getIndex(config, function(err, dates) {
       if (err) {
-        res.send('' + err, 500);
+        res.send('' + err, 404);
         res.end();
+        return;
       }
 
       dates.reverse();
 
-      res.render('index.jade', {dates: dates, channel: CHANNEL, page: 'index'});
+      res.render('index.jade', {
+        dates: dates,
+        channel: config.channel,
+        page: 'index'
+      });
+
+      res.end();
     });
   });
 
-  app.get('/log/latest', function(req, res) {
-    getIndex(function(err, dates) {
+  app.get('/:key/latest', function(req, res) {
+    var config = getConfig(req.params.key);
+    if (!config) {
+      res.send('No configuration found for ' + req.params.key, 404);
+      res.end();
+      return;
+    } else if (config.key !== req.params.key) {
+      res.redirect("/" + config.key + "/latest");
+      return;
+    }
+
+    getIndex(config, function(err, dates) {
       if (err) {
-        res.send('' + err);
+        res.send('' + err, 404);
         res.end();
+        return;
       }
 
-      renderLog(req, res, dates[dates.length - 1], dates, true);
+      renderLog(req, res, config, dates[dates.length - 1], dates, true);
     });
   });
 
-  app.get('/log/:date', function(req, res) {
-    getIndex(function(err, dates) {
+  app.get('/:key/:date', function(req, res) {
+    var config = getConfig(req.params.key);
+    if (!config) {
+      res.send('No configuration found for ' + req.params.key, 404);
+      res.end();
+      return;
+    } else if (config.key !== req.params.key) {
+      res.redirect("/" + config.key + "/" + req.params.date);
+      return;
+    }
+
+    getIndex(config, function(err, dates) {
       if (err) {
-        res.send('' + err);
+        res.send('' + err, 404);
         res.end();
+        return;
       }
 
-      renderLog(req, res, req.params.date, dates, false);
+      renderLog(req, res, config, req.params.date, dates, false);
     });
   });
 
-  app.listen(80);
+  app.get('/:key', function(req, res) {
+    res.redirect('/' + req.params.key + '/latest');
+  });
 
-
-  function getIndex(cb) {
-    fs.readdir(LOG_DIR, function(err, filenames) {
+  function getIndex(config, cb) {
+    fs.readdir(config.dir, function(err, filenames) {
       if (err) {
         cb(err);
         return;
@@ -91,8 +145,8 @@ exports.start = function() {
     });
   }
 
-  function renderLog(req, res, date, dates, isLatest) {
-    var filename = path.resolve(LOG_DIR, date + '.txt'),
+  function renderLog(req, res, config, date, dates, isLatest) {
+    var filename = path.resolve(config.dir, date + '.txt'),
         stream = fs.createReadStream(filename, { encoding: 'utf8' }),
         buffer = '', events = [];
 
@@ -146,20 +200,50 @@ exports.start = function() {
 
       res.render('log', {
         events: events,
-        date: date,
-        channel: CHANNEL,
+        channel: config.channel,
         page: date,
         format: colors.format,
         previous: dates[indexPosition - 1],
         next: dates[indexPosition + 1],
         isLatest: isLatest
       });
+
+      res.end();
     });
 
     stream.on('error', function(err) {
       stream.destroy();
       res.send('' + err, 404);
+      res.end();
       return;
     });
   }
+
+  // Make an index to map keys to a config options hash.
+  var configsMap = {};
+  for (var i = 0; i < configs.length; i++) {
+    var config = configs[i];
+    configsMap[config.key] = config;
+    if (config.alias instanceof Array) {
+      for (var j = 0; j < config.alias.length; j++) {
+        configsMap[config.alias[j]] = config;
+      }
+    } else if (config.alias) {
+      configsMap[config.alias] = config;
+    }
+  }
+
+  function getConfig(key) {
+    return configsMap[key];
+  }
+}
+
+
+LogServer.prototype.listen = function(port) {
+  this._app.listen(port);
+};
+
+
+exports.createServer = function(loggers) {
+  return new LogServer(loggers);
 };

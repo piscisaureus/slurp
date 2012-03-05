@@ -11,8 +11,8 @@ function pad3(n) {
 }
 
 function getDate(date) {
-  return date.getUTCFullYear() + '-' + 
-         pad2(date.getUTCMonth() + 1) + '-' + 
+  return date.getUTCFullYear() + '-' +
+         pad2(date.getUTCMonth() + 1) + '-' +
          pad2(date.getUTCDate());
 }
 
@@ -26,7 +26,7 @@ function getTimeMs(date) {
   return pad2(date.getUTCHours()) + ':' +
          pad2(date.getUTCMinutes()) + ':' +
          pad2(date.getUTCSeconds()) + '.' +
-         pad3(date.getUTCMilliseconds())
+         pad3(date.getUTCMilliseconds());
 }
 
 exports.getDate = getDate;

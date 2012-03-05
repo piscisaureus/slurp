@@ -5,23 +5,74 @@ var irc = require('irc'),
     fs = require('fs'),
     util = require('util');
 
-exports.start = function() {
-  var ircClient = new irc.Client(SERVER, NICK, {
-    channels: [CHANNEL],
-    debug: true
+var ircClients = {};
+
+function getIrcClient(server, nick, auth) {
+  var hash = (nick + '@' + server).toLowerCase();
+
+  if (ircClients.hasOwnProperty(hash)) {
+    return ircClients[hash];
+  }
+
+  console.log("Creating IRC client for " + hash);
+
+  var client = new irc.Client(server, nick, {
+     channels: []
   });
+
+  if (auth) {
+    if (!auth instanceof Array) {
+      auth = [auth];
+    }
+    client.once('connect', function() {
+      for (var i = 0; i < auth.length; i++) {
+        var command = auth[i],
+            result;
+        if ((result = command.match(/^\/msg\s+(\S+)\s+(.*)$/i))) {
+          client.say(result[1], result[2]);
+        } else {
+         throw new Error("Unknown auth command:" + command);
+        }
+      }
+    });
+  }
+
+  ircClients[hash] = client;
+  return client;
+}
+
+exports.start = function(config) {
+  var server = config.server,
+      botNick = config.nick,
+      channel = config.channel,
+      lcChannel = channel.toLowerCase(),
+      dir = config.dir,
+      ircClient = getIrcClient(server, botNick, config.auth);
+
+  if (ircClient.connected) {
+    ircClient.join(channel);
+  } else {
+    ircClient.once('connect', function() {
+      ircClient.join(channel);
+    });
+  }
 
   ircClient.on('error', function(error) {
     console.log('IRC error: ' + util.inspect(error));
   });
 
   function chanflt(channels) {
-    if (channels.slice) {
+    if (channels instanceof Array) {
       // array
-      return channels.indexOf(CHANNEL) != -1;
+      for (var i = 0; i < channels.length; i++) {
+        if (channels[i].toLowerCase() == lcChannel) {
+          return true;
+        }
+      }
+      return false;
     } else {
       // string
-      return channels == CHANNEL;
+      return channels == lcChannel;
     }
   }
 
@@ -55,7 +106,7 @@ exports.start = function() {
 
   ircClient.on('join', function(channel, nick) {
     if (!chanflt(channel)) return;
-    if (nick == NICK) return;
+    if (nick == botNick) return;
     log('join', { nick: nick });
   });
 
@@ -84,8 +135,7 @@ exports.start = function() {
 
   function log(type, fields) {
     var date = new Date(),
-        utcDate = utc.getDate(date),
-        args = Array.prototype.slice.call(arguments, 0);
+        utcDate = utc.getDate(date);
 
     // Make sure we're writing to the correct file
     if (lastUtcDate != utcDate) {
@@ -93,10 +143,10 @@ exports.start = function() {
         logStream.end();
       }
 
-      var logFile = path.resolve(LOG_DIR, utcDate + '.txt');
+      var logFile = path.resolve(dir, utcDate + '.txt');
       logStream = fs.createWriteStream(logFile, {
                     flags: 'a+',
-                    mode: 0666,
+                    mode: '0666',
                     encoding: 'utf8'
                   });
       lastUtcDate = utcDate;
@@ -108,6 +158,5 @@ exports.start = function() {
 
     // Write!
     logStream.write(JSON.stringify(fields) + '\n');
-    console.log(JSON.stringify(fields));
   }
 };

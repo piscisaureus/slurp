@@ -1,7 +1,10 @@
 !!! 5
 html(lang="en")
   head
-    title #{channel} logs - #{page}
+    - if (typeof title !== 'undefined')
+      title #{title}
+    - else if (typeof page !== 'undefined')
+      title #{channel} logs - #{page}
     :sass
       *
         :font-family "Segoe UI", Arial, Helvetica, sans-serif
@@ -30,15 +33,16 @@ html(lang="en")
         :height 1.5em
         span.nolink
           :color #444
-        span.date
+        span.title
           :color #444
           :font-weight bold
 
-      div.index
-        :padding .333em .666em
-
-      div.log
+      div.index, div.log
         :margin 2.5em 0 0 0
+        :padding 0 .333em 1em .333em;
+
+      div.channels
+        :margin 1.5em 0 0 0
         :padding 0 .333em 1em .333em;
 
       table.log
