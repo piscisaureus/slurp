@@ -1,3 +1,11 @@
+// Work around no.de fuckup
+if (/^v0.4/.test(process.version)) {
+  console.log("Spawning child process");
+  return require('child_process').spawn('/home/node/node/out/Release/node',
+                                        process.argv.slice(1),
+                                        { customFds: [0, 1, 2] });
+}
+
 var fs = require('fs'),
     path = require('path'),
     mkdirpSync = require('mkdirp').sync;
