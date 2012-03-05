@@ -72,7 +72,7 @@ exports.start = function(config) {
       return false;
     } else {
       // string
-      return channels == lcChannel;
+      return channels.toLowerCase() == lcChannel;
     }
   }
 
