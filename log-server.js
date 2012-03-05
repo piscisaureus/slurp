@@ -33,7 +33,7 @@ function LogServer(configs) {
     calc('m ', 60 * 1000);
     calc('s', 1000);
 
-    res.end("Up: " + uptime);
+    res.send("Up: " + uptime);
   });
 
   app.get('/channels', function(req, res) {
@@ -46,15 +46,12 @@ function LogServer(configs) {
       configs: sortedConfigs,
       title: 'channel index'
     });
-
-    res.end();
   });
 
   app.get('/:key/index', function(req, res) {
     var config = getConfig(req.params.key);
     if (!config) {
       res.send('No configuration found for ' + req.params.key, 404);
-      res.end();
       return;
     } else if (config.key !== req.params.key) {
       res.redirect("/" + config.key + "/index");
@@ -64,7 +61,6 @@ function LogServer(configs) {
     getIndex(config, function(err, dates) {
       if (err) {
         res.send('' + err, 404);
-        res.end();
         return;
       }
 
@@ -75,8 +71,6 @@ function LogServer(configs) {
         channel: config.channel,
         page: 'index'
       });
-
-      res.end();
     });
   });
 
@@ -84,7 +78,6 @@ function LogServer(configs) {
     var config = getConfig(req.params.key);
     if (!config) {
       res.send('No configuration found for ' + req.params.key, 404);
-      res.end();
       return;
     } else if (config.key !== req.params.key) {
       res.redirect("/" + config.key + "/latest");
@@ -94,7 +87,6 @@ function LogServer(configs) {
     getIndex(config, function(err, dates) {
       if (err) {
         res.send('' + err, 404);
-        res.end();
         return;
       }
 
@@ -106,7 +98,6 @@ function LogServer(configs) {
     var config = getConfig(req.params.key);
     if (!config) {
       res.send('No configuration found for ' + req.params.key, 404);
-      res.end();
       return;
     } else if (config.key !== req.params.key) {
       res.redirect("/" + config.key + "/" + req.params.date);
@@ -116,7 +107,6 @@ function LogServer(configs) {
     getIndex(config, function(err, dates) {
       if (err) {
         res.send('' + err, 404);
-        res.end();
         return;
       }
 
@@ -207,14 +197,11 @@ function LogServer(configs) {
         next: dates[indexPosition + 1],
         isLatest: isLatest
       });
-
-      res.end();
     });
 
     stream.on('error', function(err) {
       stream.destroy();
       res.send('' + err, 404);
-      res.end();
       return;
     });
   }
