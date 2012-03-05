@@ -10,7 +10,7 @@ pow.js
 ------
     var mkdirp = require('mkdirp');
     
-    mkdirp('/tmp/foo/bar/baz', 0755, function (err) {
+    mkdirp('/tmp/foo/bar/baz', function (err) {
         if (err) console.error(err)
         else console.log('pow!')
     });
@@ -31,11 +31,15 @@ mkdirp(dir, mode, cb)
 Create a new directory and any necessary subdirectories at `dir` with octal
 permission string `mode`.
 
+If `mode` isn't specified, it defaults to `0777 & (~process.umask())`.
+
 mkdirp.sync(dir, mode)
 ----------------------
 
 Synchronously create a new directory and any necessary subdirectories at `dir`
 with octal permission string `mode`.
+
+If `mode` isn't specified, it defaults to `0777 & (~process.umask())`.
 
 install
 =======
