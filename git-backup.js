@@ -7,14 +7,13 @@ function backup(dir, reason, amend, cb) {
 
   console.log("Starting backup (" + reason + ")");
 
-  var cp = spawn('git', ['add', '-u'], options);
+  var cp = spawn('git', ['add', '--all'], options);
   cp.on('exit', function(code, signal) {
     if (code || signal) {
       return cb(true, false);
     }
 
     var commit = [ 'commit',
-                   '-a',
                    '--allow-empty',
                    '-m', 'Automatic backup (' + reason + ')',
                    '--author', 'Slurp <slurp@piscisaureus.no.de>',
