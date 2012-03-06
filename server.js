@@ -30,4 +30,6 @@ require('./log-server.js')
   .createServer(configs)
   .listen(process.env.PORT || 80);
 
+require('./git-backup.js').start(LOG_ROOT);
+
 console.log("Server started");
