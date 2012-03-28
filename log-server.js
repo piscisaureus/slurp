@@ -16,6 +16,19 @@ function LogServer(configs) {
     res.redirect('/channels');
   });
 
+  app.get('/static/:file', function(req, res) {
+    var fileName = path.resolve(__dirname, 'static', req.params.file);
+    res.sendfile(fileName, function(err) {
+      if (err) {
+        if (err.code == 'ENOENT') {
+          res.send('File not found: static/' + req.params.file, 404);
+        } else {
+          res.send('Internal server error', 500);
+        }
+      }
+    });
+  });
+
   var start_time = new Date();
   app.get('/uptime', function(req, res) {
     var delta = (new Date()).getTime() - start_time.getTime(),
