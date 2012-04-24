@@ -73,7 +73,7 @@ div.log
 
           - if (event.type == 'kick')
             td.nick= '* ' + event.nick
-            td.content booted
+            td.content= 'booted '
               span.victim= event.victim
               - if (event.reason)
                 span.reason= ' (' + event.reason + ')'
