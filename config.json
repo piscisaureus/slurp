@@ -60,5 +60,11 @@
     "channel": "#stackvm",
     "server": "irc.freenode.net",
     "nick": "slurp"
+  },
+  {
+    "key": "luvit",
+    "channel": "#luvit",
+    "server": "irc.freenode.net",
+    "nick": "slurp"
   }
 ]
