@@ -66,5 +66,11 @@
     "channel": "#luvit",
     "server": "irc.freenode.net",
     "nick": "slurp"
+  },
+  {
+    "key": "nodejitsu",
+    "channel": "#nodejitsu",
+    "server": "irc.freenode.net",
+    "nick": "slurp"
   }
 ]
