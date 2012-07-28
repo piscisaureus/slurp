@@ -7,13 +7,6 @@
     "nick": "slurp"
   },
   {
-    "key": "node.js",
-    "alias": ["nodejs", "node"],
-    "channel": "#node.js",
-    "server": "irc.freenode.net",
-    "nick": "slurp"
-  },
-  {
     "key": "v8",
     "channel": "#v8",
     "server": "irc.freenode.net",
