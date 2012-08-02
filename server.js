@@ -17,7 +17,7 @@ if (process.env.HOME.indexOf('cloud9') !== -1)
 var CONFIG_FILE = path.resolve(path.dirname(process.argv[1]), 'config.json');
 var LOG_ROOT = path.resolve(process.env.HOME, 'logs');
 
-var configs = JSON.parse(fs.readFileSync(CONFIG_FILE));
+var configs = require(CONFIG_FILE);
 
 for (var i = 0; i < configs.length; i++) {
   var config = configs[i];
