@@ -47,9 +47,11 @@ exports.start = function(config) {
   var server = config.server,
       botNick = config.nick,
       channel = config.channel,
+      auth = config.auth ||
+             (config.authFile && fs.readFileSync(config.authFile, 'utf8').split(/\n/)),
       lcChannel = channel.toLowerCase(),
       dir = config.dir,
-      ircClient = getIrcClient(server, botNick, config.auth);
+      ircClient = getIrcClient(server, botNick, auth);
 
   if (ircClient.connected) {
     ircClient.join(channel);
