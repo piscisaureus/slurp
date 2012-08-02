@@ -4,66 +4,66 @@
     "alias": ["log"],
     "channel": "#libuv",
     "server": "irc.freenode.net",
-    "nick": "slurp"
+    "nick": "slurp_"
   },
   {
     "key": "v8",
     "channel": "#v8",
     "server": "irc.freenode.net",
-    "nick": "slurp"
+    "nick": "slurp_"
   },
   {
     "key": "luvmonkey",
     "channel": "#luvmonkey",
     "server": "irc.freenode.net",
-    "nick": "slurp"
+    "nick": "slurp_"
   },
   {
     "key": "candor",
     "channel": "#candor",
     "server": "irc.freenode.net",
-    "nick": "slurp"
+    "nick": "slurp_"
   },
   {
     "key": "cloud9ide",
     "channel": "#cloud9ide",
     "server": "irc.freenode.net",
-    "nick": "slurp"
+    "nick": "slurp_"
   },
   {
     "key": "coapp",
     "channel": "#coapp",
     "server": "irc.freenode.net",
-    "nick": "slurp"
+    "nick": "slurp_"
   },
   {
     "key": "nodeup",
     "channel": "#nodeup",
     "server": "irc.freenode.net",
-    "nick": "slurp"
+    "nick": "slurp_"
   },
   {
     "key": "iriscouch",
     "channel": "#iriscouch",
     "server": "irc.freenode.net",
-    "nick": "slurp"
+    "nick": "slurp_"
   },
   {
     "key": "stackvm",
     "channel": "#stackvm",
     "server": "irc.freenode.net",
-    "nick": "slurp"
+    "nick": "slurp_"
   },
   {
     "key": "luvit",
     "channel": "#luvit",
     "server": "irc.freenode.net",
-    "nick": "slurp"
+    "nick": "slurp_"
   },
   {
     "key": "nodejitsu",
     "channel": "#nodejitsu",
     "server": "irc.freenode.net",
-    "nick": "slurp"
+    "nick": "slurp_"
   }
 ]
