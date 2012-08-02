@@ -20,6 +20,8 @@ function getIrcClient(server, nick, auth) {
      channels: []
   });
 
+  client.setMaxListeners(0);
+
   if (auth) {
     if (!auth instanceof Array) {
       auth = [auth];
