@@ -30,9 +30,9 @@ function getIrcClient(server, nick, auth) {
       for (var i = 0; i < auth.length; i++) {
         var command = auth[i],
             result;
-        if ((result = command.match(/^\/msg\s+(\S+)\s+(.*)$/i))) {
+        if ((result = command.match(/^\/msg\s+(\S+)\s+(.*)/i))) {
           client.say(result[1], result[2]);
-        } else {
+        } else if (/S/.test(command)) {
          throw new Error("Unknown auth command:" + command);
         }
       }
