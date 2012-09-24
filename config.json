@@ -84,5 +84,12 @@
     "server": "irc.freenode.net",
     "nick": "slurp",
     "authFile": "./slurp.auth"
+  },
+  {
+    "key": "socketstream",
+    "channel": "#socketstream",
+    "server": "irc.freenode.net",
+    "nick": "slurp",
+    "authFile": "./slurp.auth"
   }
 ]
