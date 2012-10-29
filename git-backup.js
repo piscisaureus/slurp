@@ -27,7 +27,9 @@ function backup(dir, reason, amend, cb) {
         return cb(true, false);
       }
 
-      var cp = spawn('git', ['push', '-f'], options);
+      var cp = spawn('git',
+                     ['push', '-f', 'origin', 'HEAD:refs/heads/transition'],
+                     options);
       cp.on('exit', function(code, signal) {
         if (code || signal) {
           return cb(true, true);

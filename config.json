@@ -4,7 +4,7 @@
     "alias": ["log"],
     "channel": "#libuv",
     "server": "irc.freenode.net",
-    "nick": "slurp",
+    "nick": "slurp-transition",
     "authFile": "./slurp.auth"
   },
   {
@@ -12,77 +12,77 @@
     "alias": ["nodejs", "node"],
     "channel": "#node.js",
     "server": "irc.freenode.net",
-    "nick": "slurp",
+    "nick": "slurp-transition",
     "authFile": "./slurp.auth"
   },
   {
     "key": "v8",
     "channel": "#v8",
     "server": "irc.freenode.net",
-    "nick": "slurp",
+    "nick": "slurp-transition",
     "authFile": "./slurp.auth"
   },
   {
     "key": "luvmonkey",
     "channel": "#luvmonkey",
     "server": "irc.freenode.net",
-    "nick": "slurp",
+    "nick": "slurp-transition",
     "authFile": "./slurp.auth"
   },
   {
     "key": "candor",
     "channel": "#candor",
     "server": "irc.freenode.net",
-    "nick": "slurp",
+    "nick": "slurp-transition",
     "authFile": "./slurp.auth"
   },
   {
     "key": "cloud9ide",
     "channel": "#cloud9ide",
     "server": "irc.freenode.net",
-    "nick": "slurp",
+    "nick": "slurp-transition",
     "authFile": "./slurp.auth"
   },
   {
     "key": "coapp",
     "channel": "#coapp",
     "server": "irc.freenode.net",
-    "nick": "slurp",
+    "nick": "slurp-transition",
     "authFile": "./slurp.auth"
   },
   {
     "key": "nodeup",
     "channel": "#nodeup",
     "server": "irc.freenode.net",
-    "nick": "slurp",
+    "nick": "slurp-transition",
     "authFile": "./slurp.auth"
   },
   {
     "key": "iriscouch",
     "channel": "#iriscouch",
     "server": "irc.freenode.net",
-    "nick": "slurp",
+    "nick": "slurp-transition",
     "authFile": "./slurp.auth"
   },
   {
     "key": "stackvm",
     "channel": "#stackvm",
     "server": "irc.freenode.net",
-    "nick": "slurp",
+    "nick": "slurp-transition",
     "authFile": "./slurp.auth"
   },
   {
     "key": "luvit",
     "channel": "#luvit",
     "server": "irc.freenode.net",
-    "nick": "slurp",
+    "nick": "slurp-transition",
     "authFile": "./slurp.auth"
   },
   {
     "key": "nodejitsu",
     "channel": "#nodejitsu",
     "server": "irc.freenode.net",
-    "nick": "slurp",
+    "nick": "slurp-transition",
     "authFile": "./slurp.auth"
   }
 ]
