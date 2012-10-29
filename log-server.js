@@ -82,6 +82,7 @@ function LogServer(configs) {
       res.render('index.jade', {
         dates: dates,
         channel: config.channel,
+        key: req.params.key,
         page: 'index'
       });
     });
@@ -204,6 +205,7 @@ function LogServer(configs) {
       res.render('log', {
         events: events,
         channel: config.channel,
+        key: req.params.key,
         page: date,
         format: colors.format,
         previous: dates[indexPosition - 1],
