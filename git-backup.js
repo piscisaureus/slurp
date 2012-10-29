@@ -8,7 +8,7 @@ function backup(dir, reason, amend, cb) {
   console.log("Starting backup (" + reason + ")");
 
   var cp = spawn('git', ['add', '--all'], options);
-  cp.on('exit', function(code, signal) {
+  cp.on('close', function(code, signal) {
     if (code || signal) {
       return cb(true, false);
     }
@@ -22,13 +22,13 @@ function backup(dir, reason, amend, cb) {
       commit.push('--amend');
     }
     var cp = spawn('git', commit, options);
-    cp.on('exit', function(code, signal) {
+    cp.on('close', function(code, signal) {
       if (code || signal) {
         return cb(true, false);
       }
 
       var cp = spawn('git', ['push', '-f'], options);
-      cp.on('exit', function(code, signal) {
+      cp.on('close', function(code, signal) {
         if (code || signal) {
           return cb(true, true);
         }
