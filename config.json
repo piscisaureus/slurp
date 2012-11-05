@@ -91,5 +91,12 @@
     "server": "irc.freenode.net",
     "nick": "slurp",
     "authFile": "./slurp.auth"
+  },
+  {
+    "key": "openshift",
+    "channel": "#openshift",
+    "server": "irc.freenode.net",
+    "nick": "slurp",
+    "authFile": "./slurp.auth"
   }
 ]
