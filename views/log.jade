@@ -35,7 +35,7 @@ div.log
               - var spans = format(event.message)
               - each span, i in spans
                 - if (span.href)
-                  a(style=span.style, class=span.class, href=span.href, target='_blank')= span.text
+                  a(style=span.style, class=span.class, href=span.href, target='_blank', rel='nofollow')= span.text
                 - else if (span.style || span.class)
                   span(style=span.style, class=span.class)= span.text
                 - else
