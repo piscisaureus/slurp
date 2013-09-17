@@ -12,21 +12,10 @@ function LogServer(configs) {
 
   app.set('view engine', 'jade');
 
+  app.use(express.static(__dirname + '/static'));
+
   app.get('/', function(req, res) {
     res.redirect('/channels');
-  });
-
-  app.get('/static/:file', function(req, res) {
-    var fileName = path.resolve(__dirname, 'static', req.params.file);
-    res.sendfile(fileName, function(err) {
-      if (err) {
-        if (err.code == 'ENOENT') {
-          res.send('File not found: static/' + req.params.file, 404);
-        } else {
-          res.send('Internal server error', 500);
-        }
-      }
-    });
   });
 
   var start_time = new Date();
