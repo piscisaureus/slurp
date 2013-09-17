@@ -104,6 +104,9 @@ function LogServer(configs) {
     } else if (config.key !== req.params.key) {
       res.redirect("/" + config.key + "/" + req.params.date);
       return;
+    } else if (/[.\/\\\0]/.test(req.params.date)) {
+      res.send('Go away!', 403);
+      return;
     }
 
     getIndex(config, function(err, dates) {
