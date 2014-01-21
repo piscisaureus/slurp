@@ -112,5 +112,19 @@
     "server": "irc.freenode.net",
     "nick": "slurp",
     "authFile": "./slurp.auth"
+  },
+  {
+    "key": "strongloop",
+    "channel": "#strongloop",
+    "server": "irc.freenode.net",
+    "nick": "slurp",
+    "authFile": "./slurp.auth"
+  },
+  {
+    "key": "loopback",
+    "channel": "#loopback",
+    "server": "irc.freenode.net",
+    "nick": "slurp",
+    "authFile": "./slurp.auth"
   }
 ]
