@@ -126,5 +126,19 @@
     "server": "irc.freenode.net",
     "nick": "slurp",
     "authFile": "./slurp.auth"
+  },
+  {
+    "key": "expressjs",
+    "channel": "#expressjs",
+    "server": "irc.freenode.net",
+    "nick": "slurp",
+    "authFile": "./slurp.auth"
+  },
+  {
+    "key": "koajs",
+    "channel": "#koajs",
+    "server": "irc.freenode.net",
+    "nick": "slurp",
+    "authFile": "./slurp.auth"
   }
 ]
