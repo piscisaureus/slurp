@@ -131,14 +131,14 @@
     "key": "expressjs",
     "channel": "#expressjs",
     "server": "irc.freenode.net",
-    "nick": "slurp",
+    "nick": "slurp2",
     "authFile": "./slurp.auth"
   },
   {
     "key": "koajs",
     "channel": "#koajs",
     "server": "irc.freenode.net",
-    "nick": "slurp",
+    "nick": "slurp2",
     "authFile": "./slurp.auth"
   }
 ]
