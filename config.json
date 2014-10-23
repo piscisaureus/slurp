@@ -4,141 +4,141 @@
     "alias": ["log"],
     "channel": "#libuv",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-libuv}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "node.js",
     "alias": ["nodejs", "node"],
     "channel": "#node.js",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-nodejs}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "v8",
     "channel": "#v8",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-v8}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "luvmonkey",
     "channel": "#luvmonkey",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-luvmnky}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "candor",
     "channel": "#candor",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-candor}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "cloud9ide",
     "channel": "#cloud9ide",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-c9ide}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "coapp",
     "channel": "#coapp",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-coapp}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "nodeup",
     "channel": "#nodeup",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-nodeup}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "iriscouch",
     "channel": "#iriscouch",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-iriscouch}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "stackvm",
     "channel": "#stackvm",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-stackvm}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "luvit",
     "channel": "#luvit",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-luvit}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "nodejitsu",
     "channel": "#nodejitsu",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-njitsu}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "socketstream",
     "channel": "#socketstream",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-sockstrm}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "openshift",
     "channel": "#openshift",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-openshift}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "leveldb",
     "channel": "##leveldb",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-leveldb}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "manta",
     "channel": "#manta",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-manta}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "strongloop",
     "channel": "#strongloop",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-stronglp}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "loopback",
     "channel": "#loopback",
     "server": "irc.freenode.net",
-    "nick": "slurp",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-loopback}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "expressjs",
     "channel": "#expressjs",
     "server": "irc.freenode.net",
-    "nick": "slurp2",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-express}",
+    "authFile": "../slurp.auth"
   },
   {
     "key": "koajs",
     "channel": "#koajs",
     "server": "irc.freenode.net",
-    "nick": "slurp2",
-    "authFile": "./slurp.auth"
+    "nick": "{slurp-koajs}",
+    "authFile": "../slurp.auth"
   }
 ]
