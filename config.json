@@ -19,132 +19,132 @@
     "key": "v8",
     "channel": "#v8",
     "server": "irc.freenode.net",
-    "nick": "{slurp-v8}",
+    "nick": "{slurp}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "luvmonkey",
     "channel": "#luvmonkey",
     "server": "irc.freenode.net",
-    "nick": "{slurp-luvmnky}",
+    "nick": "{slurp}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "candor",
     "channel": "#candor",
     "server": "irc.freenode.net",
-    "nick": "{slurp-candor}",
+    "nick": "{slurp}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "cloud9ide",
     "channel": "#cloud9ide",
     "server": "irc.freenode.net",
-    "nick": "{slurp-c9ide}",
+    "nick": "{slurp}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "coapp",
     "channel": "#coapp",
     "server": "irc.freenode.net",
-    "nick": "{slurp-coapp}",
+    "nick": "{slurp}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "nodeup",
     "channel": "#nodeup",
     "server": "irc.freenode.net",
-    "nick": "{slurp-nodeup}",
+    "nick": "{slurp}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "iriscouch",
     "channel": "#iriscouch",
     "server": "irc.freenode.net",
-    "nick": "{slurp-iriscouch}",
+    "nick": "{slurp}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "stackvm",
     "channel": "#stackvm",
     "server": "irc.freenode.net",
-    "nick": "{slurp-stackvm}",
+    "nick": "{slurp}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "luvit",
     "channel": "#luvit",
     "server": "irc.freenode.net",
-    "nick": "{slurp-luvit}",
+    "nick": "{slurp}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "nodejitsu",
     "channel": "#nodejitsu",
     "server": "irc.freenode.net",
-    "nick": "{slurp-njitsu}",
+    "nick": "{slurp}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "socketstream",
     "channel": "#socketstream",
     "server": "irc.freenode.net",
-    "nick": "{slurp-sockstrm}",
+    "nick": "{slurp}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "openshift",
     "channel": "#openshift",
     "server": "irc.freenode.net",
-    "nick": "{slurp-openshift}",
+    "nick": "{slurp}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "leveldb",
     "channel": "##leveldb",
     "server": "irc.freenode.net",
-    "nick": "{slurp-leveldb}",
+    "nick": "{slurp}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "manta",
     "channel": "#manta",
     "server": "irc.freenode.net",
-    "nick": "{slurp-manta}",
+    "nick": "{slurp}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "strongloop",
     "channel": "#strongloop",
     "server": "irc.freenode.net",
-    "nick": "{slurp-stronglp}",
+    "nick": "{slurp-sl}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "loopback",
     "channel": "#loopback",
     "server": "irc.freenode.net",
-    "nick": "{slurp-loopback}",
+    "nick": "{slurp-sl}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "expressjs",
     "channel": "#expressjs",
     "server": "irc.freenode.net",
-    "nick": "{slurp-express}",
+    "nick": "{slurp-sl}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "koajs",
     "channel": "#koajs",
     "server": "irc.freenode.net",
-    "nick": "{slurp-koajs}",
+    "nick": "{slurp}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "node-forward",
     "alias": ["nodeforward", "nfwd"],
-    "channel": "#nodeforward",
+    "channel": "#node-forward",
     "server": "irc.freenode.net",
     "nick": "{slurp-nfwd}",
     "authFile": "../slurp.auth"
