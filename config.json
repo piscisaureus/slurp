@@ -140,5 +140,13 @@
     "server": "irc.freenode.net",
     "nick": "{slurp-koajs}",
     "authFile": "../slurp.auth"
+  },
+  {
+    "key": "node-forward",
+    "alias": ["nodeforward", "nfwd"],
+    "channel": "#nodeforward",
+    "server": "irc.freenode.net",
+    "nick": "{slurp-nfwd}",
+    "authFile": "../slurp.auth"
   }
 ]
