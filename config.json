@@ -8,6 +8,13 @@
     "authFile": "../slurp.auth"
   },
   {
+    "key": "npm",
+    "channel": "#npm",
+    "server": "irc.freenode.net",
+    "nick": "{slurp}",
+    "authFile": "../slurp.auth"
+  },
+  {
     "key": "node.js",
     "alias": ["nodejs", "node"],
     "channel": "#node.js",
