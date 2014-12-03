@@ -160,7 +160,15 @@
     "alias": ["nodeforward", "nfwd"],
     "channel": "#node-forward",
     "server": "irc.freenode.net",
-    "nick": "{slurp-nfwd}",
+    "nick": "{slurp-iojs}",
+    "authFile": "../slurp.auth"
+  },
+  {
+    "key": "io.js",
+    "alias": ["iojs"],
+    "channel": "#io.js",
+    "server": "irc.freenode.net",
+    "nick": "{slurp-iojs}",
     "authFile": "../slurp.auth"
   }
 ]
