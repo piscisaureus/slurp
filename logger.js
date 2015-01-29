@@ -51,6 +51,9 @@ exports.start = function(config) {
              (config.authFile && fs.readFileSync(config.authFile, 'utf8').split(/\n/)),
       lcChannel = channel.toLowerCase(),
       dir = config.dir,
+      dirCategories = typeof config.dirCategories === 'boolean'
+                      ? config.dirCategories
+                      : true,
       ircClient = getIrcClient(server, botNick, auth);
 
   if (ircClient.connected) {
@@ -139,7 +142,8 @@ exports.start = function(config) {
 
   function log(type, fields) {
     var date = new Date(),
-        utcDate = utc.getDate(date);
+        utcDate = utc.getDate(date),
+        logDir = dir;
 
     // Make sure we're writing to the correct file
     if (lastUtcDate != utcDate) {
@@ -147,7 +151,21 @@ exports.start = function(config) {
         logStream.end();
       }
 
-      var logFile = path.resolve(dir, utcDate + '.txt');
+      if (dirCategories) {
+        var utcYearMonth = /^(\d{4}\-\d{2})/.exec(utcDate)[1];
+        logDir = path.resolve(dir, utcYearMonth);
+        if (!lastUtcDate || lastUtcDate.indexOf(utcYearMonth) !== 0) {
+          try {
+            fs.mkdirSync(logDir);
+          } catch (ex) {
+            if (ex.code !== 'EEXIST') {
+              throw ex;
+            }
+          }
+        }
+      }
+
+      var logFile = path.resolve(logDir, utcDate + '.txt');
       logStream = fs.createWriteStream(logFile, {
                     flags: 'a+',
                     mode: '0666',
