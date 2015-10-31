@@ -170,5 +170,12 @@
     "server": "irc.freenode.net",
     "nick": "{slurp-iojs}",
     "authFile": "../slurp.auth"
+  },
+  {
+    "key": "node-build",
+    "channel": "#node-build",
+    "server": "irc.freenode.net",
+    "nick": "{slurp-iojs}",
+    "authFile": "../slurp.auth"
   }
 ]
