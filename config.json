@@ -156,14 +156,6 @@
     "authFile": "../slurp.auth"
   },
   {
-    "key": "node-forward",
-    "alias": ["nodeforward", "nfwd"],
-    "channel": "#node-forward",
-    "server": "irc.freenode.net",
-    "nick": "{slurp-iojs}",
-    "authFile": "../slurp.auth"
-  },
-  {
     "key": "io.js",
     "alias": ["iojs"],
     "channel": "#io.js",
