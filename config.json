@@ -156,18 +156,17 @@
     "authFile": "../slurp.auth"
   },
   {
-    "key": "io.js",
-    "alias": ["iojs"],
-    "channel": "#io.js",
+    "key": "node-dev",
+    "channel": "#node-dev",
     "server": "irc.freenode.net",
-    "nick": "{slurp-iojs}",
+    "nick": "{slurp-nodejs}",
     "authFile": "../slurp.auth"
   },
   {
     "key": "node-build",
     "channel": "#node-build",
     "server": "irc.freenode.net",
-    "nick": "{slurp-iojs}",
+    "nick": "{slurp-nodejs}",
     "authFile": "../slurp.auth"
   }
 ]
