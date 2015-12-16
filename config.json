@@ -157,6 +157,7 @@
   },
   {
     "key": "node-dev",
+    "alias": ["io.js", "iojs"],
     "channel": "#node-dev",
     "server": "irc.freenode.net",
     "nick": "{slurp-nodejs}",
