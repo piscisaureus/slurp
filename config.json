@@ -169,5 +169,12 @@
     "server": "irc.freenode.net",
     "nick": "{slurp-nodejs}",
     "authFile": "../slurp.auth"
+  },
+  {
+    "key": "tc39",
+    "channel": "#tc39",
+    "server": "irc.freenode.net",
+    "nick": "{slurp-tc39}",
+    "authFile": "../slurp.auth"
   }
 ]
