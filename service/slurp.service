@@ -1,0 +1,14 @@
+[Unit]
+Description=Slurp IRC logging
+
+[Service]
+LimitNOFILE=50000
+User=slurp
+Group=slurp
+Environment=HOME=/home/slurp
+WorkingDirectory=/home/slurp/slurp
+ExecStart=/usr/local/bin/node server.js
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
