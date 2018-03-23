@@ -176,5 +176,13 @@
     "server": "irc.freenode.net",
     "nick": "{slurp-tc39}",
     "authFile": "../slurp.auth"
+  },
+  {
+    "key": "propelml",
+    "alias": ["propel"],
+    "channel": "#propelml",
+    "server": "irc.freenode.net",
+    "nick": "{slurp}",
+    "authFile": "../slurp.auth"
   }
 ]
